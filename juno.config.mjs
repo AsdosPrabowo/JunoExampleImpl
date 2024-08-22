@@ -1,10 +1,9 @@
-import { defineConfig } from "@junobuild/config";
+import {defineConfig} from '@junobuild/config';
 
 /** @type {import('@junobuild/config').JunoConfig} */
 export default defineConfig({
   satellite: {
-    // TODO: STEP_1_CONFIGURATION
-    id: "replace-satellite-id",
-    source: "dist",
-  },
+    id: '3cjuy-iyaaa-aaaal-ajsuq-cai',
+    source: 'dist'
+  }
 });

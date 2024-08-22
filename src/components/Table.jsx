@@ -16,13 +16,16 @@ export const Table = () => {
   }, []);
 
   const list = async () => {
-    // TODO: STEP_7_LIST_DOCS
-    const items = [];
-    // const { items } = await listDocs({
-    //   collection: "notes",
-    // });
+    try {
+      // Mengambil dokumen dari koleksi 'bansos'
+      const { items } = await listDocs({
+        collection: "bansos",
+      });
 
-    setItems(items);
+      setItems(items);
+    } catch (error) {
+      console.error("Error fetching documents: ", error);
+    }
   };
 
   useEffect(() => {
@@ -46,7 +49,16 @@ export const Table = () => {
         {items.map((item, index) => {
           const {
             key,
-            data: { text, url },
+            data: {
+              provinceName,
+              date,
+              assistanceType,
+              cityName,
+              districtName,
+              villageName,
+              transactionAmount,
+              url,
+            },
           } = item;
 
           return (
@@ -63,7 +75,13 @@ export const Table = () => {
                 {index + 1} )
               </span>
               <div role="cell" className="line-clamp-3 overflow-hidden grow">
-                {text}
+                <div>Provinsi: {provinceName}</div>
+                <div>Tanggal: {date}</div>
+                <div>Tipe Bansos: {assistanceType}</div>
+                <div>Kota/Kabupaten: {cityName}</div>
+                <div>Kecamatan: {districtName}</div>
+                <div>Desa/Kelurahan: {villageName}</div>
+                <div>Jumlah Dana: {transactionAmount}</div>
               </div>
               <div
                 role="cell"
